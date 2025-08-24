@@ -9,3 +9,14 @@ Feature: Test the login functionality
     And Enter "Alimentare25#" in the password input field
     And Click the button "Conectare"
     Then User is redirected to the "https://probaamg.rdsweb.ro/user/\d+$" page
+
+  @signUP
+  Scenario: Sign up as a new user
+    Given Navigate to the sign-up page
+    When Enter "proba123" in the user input field
+    And Enter "Alimentare256#" in the parola input field
+    And Enter "Ionescu" in the nume input field
+    And Enter "Ion" in the prenume input field
+    And Enter "Bucuresti" in the colegiu input field
+    And Click the button "Inregistrare"
+    Then User is redirected to the "https://probaamg.rdsweb.ro/user/\d+$" page

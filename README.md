@@ -3,7 +3,7 @@
  - Behave
  - Behave-hTML-Formatter
 ---
- === PUGIN DE INSTALAT ===
+ === PLUGIN DE INSTALAT ===
  - gherkin 
  - ini
 
@@ -14,12 +14,14 @@
 - browser.py
 - environment.py
 - behave.ini
+- README.md
 
  === COMENZI EXECUTIE TESTE ===
 - behave (executa toate testele)
-- behave -- tags=login (executa toate testele cu tag-ul 'login')
+- behave --tags=login (executa toate testele cu tag-ul 'login')
+- behave --tags=signUP (executa toate testele cu tag-ul 'signUP')
 - behave --tags=login, smoke (executa toate testele cu tag-urile 'login' sau 'smoke')
-- behave -f html -o report.html --tags=login (genereaza raport HTML)
+- behave -f behave_html_formatter:HTMLFormatter -o report01.html --tags=login (genereaza raport HTML)
 Acest proiect conține teste automate pentru aplicația web `https://probaamg.rdsweb.ro`, folosind framework-ul **Behave** (BDD) și **Selenium WebDriver** pentru interacțiunea cu browserul.
 
 ---

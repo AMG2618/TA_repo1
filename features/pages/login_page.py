@@ -1,26 +1,27 @@
 from selenium.webdriver.common.by import By
-
-from browser import Browser
+from features.pages.base_page import BasePage
 
 LOGIN_PAGE_URL = "https://probaamg.rdsweb.ro/login"
 
-class LoginPage(Browser):
+
+class LoginPage(BasePage):
 
     INPUT_USERNAME = (By.NAME, "username")
     INPUT_PASSWORD = (By.NAME, "password")
     BUTTON_SUBMIT = (By.XPATH, "//input[@type='submit' and @value='Conectare']")
 
+
     def open(self):
         self.driver.get(LOGIN_PAGE_URL)
 
     def set_username(self, text):
-        self.driver.find_element(*self.INPUT_USERNAME).send_keys(text)
+        self.type(self.INPUT_USERNAME, text)
 
-    def set_password(self, pass_text):
-        self.driver.find_element(*self.INPUT_PASSWORD).send_keys(pass_text)
+    def set_password(self, text):
+        self.type(self.INPUT_PASSWORD, text)
 
     def click_button_submit(self):
-        self.driver.find_element(*self.BUTTON_SUBMIT).click()
+        self.click(self.BUTTON_SUBMIT)
 
     def verify_current_url(self, expected_url):
         print(f"url-ul primit: {self.driver.current_url}" )
@@ -30,5 +31,7 @@ class LoginPage(Browser):
             return 1
         else:
             return 0
-        # return self.driver.current_url == expected_url
+
+
+
 
