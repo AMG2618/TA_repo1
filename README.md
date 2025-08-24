@@ -1,5 +1,25 @@
-# 🧪 TA1 - Testare Automată cu Behave și Selenium
+ === LIBRARII de INSALAT ===
+ - Selenium
+ - Behave
+ - Behave-hTML-Formatter
+---
+ === PUGIN DE INSTALAT ===
+ - gherkin 
+ - ini
 
+=== STRUCTURA FOLDERE SI FISIERE ===
+- features
+- pages
+- steps
+- browser.py
+- environment.py
+- behave.ini
+
+ === COMENZI EXECUTIE TESTE ===
+- behave (executa toate testele)
+- behave -- tags=login (executa toate testele cu tag-ul 'login')
+- behave --tags=login, smoke (executa toate testele cu tag-urile 'login' sau 'smoke')
+- behave -f html -o report.html --tags=login (genereaza raport HTML)
 Acest proiect conține teste automate pentru aplicația web `https://probaamg.rdsweb.ro`, folosind framework-ul **Behave** (BDD) și **Selenium WebDriver** pentru interacțiunea cu browserul.
 
 ---
@@ -8,15 +28,15 @@ Acest proiect conține teste automate pentru aplicația web `https://probaamg.rd
 ```plaintext
 TA1/
     features/
-        1_sign_up.feature
-        2_sign_up-user_error.feature
-        3_login.feature
-        4_incarca_document.feature
-        5_verifica_documente_incarcate.feature
-        6_descarca_document.feature
-        7_cerere_viza_48.feature
-        8_cerere_emc_eroare.feature
-        9_admin_verificare_cereri_emc.feature
+        sign_up.feature
+        sign_up_user_error.feature
+        login.feature
+        upload_document.feature
+        verify_docs_uploaded.feature
+        download_document.feature
+        request_visa_48.feature
+        request_visa_error.feature
+        admin_verificare_cereri_emc.feature
         10_admin_editare_user.feature
         11_admin_stergere_user.feature
     pages/
@@ -64,18 +84,3 @@ features/*.feature: scenarii scrise în format Gherkin (Given, When, Then).
 pages/: acțiuni și funcții reutilizabile pentru interacțiunea cu paginile web.
 
 environment.py: setup și teardown pentru testele Behave (ex. deschiderea browserului).
-
-----
-Funcționalități testate
-    1. Înregistrare utilizator
-    2. Înregistrare utilizator cu eroare
-    3. Autentificare utilizator
-    4. Încărcare document
-    5. Verificare documente încărcate
-    6. Descărcare document
-    7. Cerere viză EMC cu minim 48 puncte
-    8. Cerere viză EMC cu eroare (sub 48 puncte)
-    9. Administrator verificare cereri EMC
-    10. Administrator editare utilizator
-    11. Administrator ștergere utilizator
-----
