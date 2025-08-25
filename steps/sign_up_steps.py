@@ -28,10 +28,11 @@ def step_impl(context, text_colegiu):
 
 @when('Click the button "Inregistrare"')
 def step_impl(context):
+    print(f"Ma apuc sa dau submit")
     context.sign_up_page.driver.find_element(By.XPATH, "//input[@type='submit' and @value='Inregistrare']").click()
-
-# @then('User is redirected to the "{expected_signup_url}" page')
-# def step_impl(context, expected_url):
-#     # expected_url is already a regex string
-#     assert context.login_page.verify_signup_url(expected_url), \
-#         f"URL did not match: expected pattern: {expected_url}"
+    print(f"Am dat submit")
+@then('User is redirected to the login "{expected_login_url}" page')
+def step_impl(context, expected_login_url):
+    # expected_url is already a regex string
+    assert context.sign_up_page.verify_signup_url(expected_login_url), \
+        f"URL did not match: expected pattern: {expected_login_url}"

@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+
 from browser import Browser
 
 SIGN_UP_PAGE_URL = "https://probaamg.rdsweb.ro/inregistrare"
@@ -8,7 +10,7 @@ class SignUpPage(Browser):
     INPUT_PASSWORD = (By.NAME, "parola")
     INPUT_NUME = (By.NAME, "nume")
     INPUT_PRENUME = (By.NAME, "prenume")
-    INPUT_COLEGIU = (By.NAME, "colegiu")
+    INPUT_COLEGIU = (By.ID, "colegiu")
     BUTTON_SUBMIT = (By.XPATH, "//input[@type='submit' and @value='Inregistrare']")
 
     def open(self):
@@ -26,17 +28,18 @@ class SignUpPage(Browser):
     def fill_prenume(self, text_prenume):
         self.driver.find_element(By.NAME, "prenume").send_keys(text_prenume)
 
-    def fill_colegiu(self, text_colegiu):
-        self.driver.find_element(By.NAME, "colegiu").send_keys(text_colegiu)
+    def fill_colegiu(self, colegiu_value):
+        dropdown = Select(self.driver.find_element(By.ID, "colegiu"))
+        dropdown.select_by_value(colegiu_value)
 
     def click_inregistrare(self):
         self.driver.find_element(By.XPATH, '//button[text()="Inregistrare"]').click()
 
-    def verify_signup_url(self, expected_signup_url):
-        print(f"url-ul primit: {self.driver.expected_signup_url}")
+    def verify_signup_url(self, expected_login_url):
+        print(f"url-ul primit: {self.driver.current_url}")
         import re
         current_url = self.driver.current_url
-        if bool(re.match(expected_signup_url, current_url)):
+        if bool(re.match(expected_login_url, current_url)):
             return 1
         else:
             return 0

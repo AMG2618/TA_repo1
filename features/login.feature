@@ -19,4 +19,4 @@ Feature: Test the login functionality
     And Enter "Ion" in the prenume input field
     And Enter "Bucuresti" in the colegiu input field
     And Click the button "Inregistrare"
-    Then User is redirected to the "https://probaamg.rdsweb.ro/user/\d+$" page
+    Then User is redirected to the login "https://probaamg.rdsweb.ro/login" page
