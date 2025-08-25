@@ -12,6 +12,7 @@ class SignUpPage(Browser):
     INPUT_PRENUME = (By.NAME, "prenume")
     INPUT_COLEGIU = (By.ID, "colegiu")
     BUTTON_SUBMIT = (By.XPATH, "//input[@type='submit' and @value='Inregistrare']")
+    MESAJ_EROARE = (By.CLASS_NAME, "error")
 
     def open(self):
         self.driver.get(SIGN_UP_PAGE_URL)
@@ -33,7 +34,7 @@ class SignUpPage(Browser):
         dropdown.select_by_value(colegiu_value)
 
     def click_inregistrare(self):
-        self.driver.find_element(By.XPATH, '//button[text()="Inregistrare"]').click()
+        self.driver.find_element(By.XPATH, "//input[@type='submit' and @value='Inregistrare']").click()
 
     def verify_signup_url(self, expected_login_url):
         print(f"url-ul primit: {self.driver.current_url}")
