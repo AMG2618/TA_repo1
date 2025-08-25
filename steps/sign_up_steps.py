@@ -4,15 +4,17 @@ from selenium.webdriver.common.by import By
 
 @given("Navigate to the sign-up page")
 def step_impl(context):
-    context.browser.driver.get("https://probaamg.rdsweb.ro/inregistrare")
+    #context.browser.driver.get("https://probaamg.rdsweb.ro/inregistrare")
+    context.sign_up_page.open()
 
 @when('Enter "{text_user}" in the user input field')
 def step_impl(context, text_user):
     context.sign_up_page.fill_user(text_user)
+    #context.sign_up_page.set_username(text)
 
 @when('Enter "{text_pass}" in the parola input field')
 def step_impl(context, text_pass):
-    context.sign_up_page.fill_user(text_pass)
+    context.sign_up_page.fill_password(text_pass)
 
 @when('Enter "{text_nume}" in the nume input field')
 def step_impl(context, text_nume):
@@ -32,7 +34,8 @@ def step_impl(context):
 
 @then('User is redirected to the login "{expected_login_url}" page')
 def step_impl(context, expected_login_url):
-    assert context.sign_up_page.verify_signup_url(expected_login_url) == 1, f"Expected URL to match {expected_login_url}, but got {context.sign_up_page.driver.current_url}"
-    print(f"User is redirected to the login page")
-    context.browser.close()
+    assert context.sign_up_page.verify_signup_url(expected_login_url), \
+        f"Expected URL to match {expected_login_url} but got {context.sign_up_page.driver.current_url}"
+
+
 
