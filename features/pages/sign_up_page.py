@@ -15,7 +15,7 @@ class SignUpPage(BasePage):
     INPUT_PRENUME = (By.NAME, "prenume")
     INPUT_COLEGIU = (By.ID, "colegiu")
     BUTTON_SUBMIT = (By.XPATH, "//input[@type='submit' and @value='Inregistrare']")
-    # MESAJ_EROARE = (By.CLASS_NAME, "error")
+    MESAJ_EROARE = (By.XPATH, "//p[contains(text(), 'Eroare! Utilizatorul exista deja in baza de date')]")
 
     def open(self):
         self.driver.get(SIGN_UP_PAGE_URL)
@@ -39,6 +39,8 @@ class SignUpPage(BasePage):
     def click_inregistrare(self):
         #self.driver.find_element(By.XPATH, "//input[@type='submit' and @value='Inregistrare']").click()
         self.click(self.BUTTON_SUBMIT)
+    def get_error_message(self):
+        return self.driver.find_element(By.XPATH, "//h5[contains(text(), 'Eroare! Utilizatorul exista deja in baza de date')]").text
 
     def verify_signup_url(self, expected_url):
         current_url = self.driver.current_url

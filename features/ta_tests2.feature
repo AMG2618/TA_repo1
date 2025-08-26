@@ -2,16 +2,6 @@ Feature: Sign-up new user
  Background:
       Given Navigate to the sign-up page
 
- @sign-up-existing
-  Scenario: Sign up with an existing user
-    When Enter "proba12" in the user input field
-    And Enter "Alimentare25" in the parola input field
-    And Enter "Ionescu" in the nume input field
-    And Enter "Ion" in the prenume input field
-    And Enter "Bucuresti" in the colegiu input field
-    And Click the button "Inregistrare"
-    Then Error message "Eroare! Utilizatorul exista deja in baza de date" is displayed
-
  @sign-up
   Scenario: Sign up as a new user
     When Enter "proba12" in the user input field
@@ -21,14 +11,25 @@ Feature: Sign-up new user
     And Enter "Bucuresti" in the colegiu input field
     And Click the button "Inregistrare"
     Then User is redirected to the login "https://probaamg.rdsweb.ro/login" page
-#
-#Feature: Autentificare utilizator existent
-#  @T3
-#  Scenario: Login cu credențiale valide
-#    Given utilizatorul accesează pagina de login
-#    When introduce userul și parola corecte
-#    And apasă pe butonul "Conectare"
-#    Then utilizatorul este redirecționat către dashboard
+
+ @sign-up-existing
+  Scenario: Sign up with an existing user
+    When Enter "proba12" in the user input field
+    And Enter "Alimentare25" in the parola input field
+    And Enter "Ionescu" in the nume input field
+    And Enter "Ion" in the prenume input field
+    And Enter "Bucuresti" in the colegiu input field
+    And Click the button "Inregistrare"
+    #Then Error message "Eroare! Utilizatorul exista deja in baza de date" is displayed
+    Then Apare un mesaj cu Utilizatorul exista deja in baza de date
+
+  @login
+  Scenario: Login as standard user with valid credentials
+    Given Navigate to the login page
+    When Enter "proba12" in the username input field
+    And Enter "Alimentare25" in the password input field
+    And Click the button "Conectare"
+    Then User is redirected to the "https://probaamg.rdsweb.ro/user/\d+$" page
 #
 #Feature: Încărcare fișier EMC după autentificare
 #  @T4

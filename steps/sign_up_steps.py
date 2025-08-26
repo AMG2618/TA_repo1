@@ -37,5 +37,10 @@ def step_impl(context, expected_login_url):
     assert context.sign_up_page.verify_signup_url(expected_login_url), \
         f"Expected URL to match {expected_login_url} but got {context.sign_up_page.driver.current_url}"
 
+@then('Apare un mesaj cu Utilizatorul exista deja in baza de date')
+def step_impl(context):
+    expected_error = "Eroare! Utilizatorul exista deja in baza de date"
+    actual_error = context.sign_up_page.get_error_message()
+    assert actual_error == expected_error, f"Expected error message to be '{expected_error}' but got '{actual_error}'"
 
 
