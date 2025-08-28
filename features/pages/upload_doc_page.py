@@ -6,8 +6,8 @@ from features.pages.base_page import BasePage
 USER_PAGE = "https://probaamg.rdsweb.ro/user/\d+$"
 
 class UploadDocumentPage(BasePage):
-
-    CLICK_LINK = (By.XPATH, "//input[@type='submit' and @value='Incarca fisier']")
+    #BUTTON_INCARCA_FISIER = (By.XPATH, "//input[@type='submit' and @value='Incarca fisier']")
+    BUTTON_INCARCA_FISIER = (By.LINK_TEXT, 'Incarca fisier')
     CHOOSE_FILE_BUTTON = (By.NAME, "file")
     FILE_PATH = r"C:\\Users\Localadmin\Downloads/Test documente incarcate.pdf"
     INPUT_TIP_DOCUMENT = (By.ID, "tip")
@@ -20,8 +20,9 @@ class UploadDocumentPage(BasePage):
         self.driver.get(USER_PAGE)
 
     def click_incarca_fisier_link(self):
-        user_id = self.driver.find_element(By.XPATH, '//td[contains(text(), "ID")]/following-sibling::td').text
-        self.driver.find_element(By.XPATH, f'//a[contains(@href, "/incarcare/{user_id}")]').click()
+        #user_id = self.driver.find_element(By.XPATH, '//td[contains(text(), "ID")]/following-sibling::td').text
+        #self.driver.find_element(By.XPATH, f'//a[contains(@href, "/incarcare/{user_id}")]').click()
+        self.click(self.BUTTON_INCARCA_FISIER)
 
     def choose_file(self, file_path):
         self.driver.find_element(*self.CHOOSE_FILE_BUTTON).send_keys(file_path)

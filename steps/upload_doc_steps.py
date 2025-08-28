@@ -10,7 +10,9 @@ def step_impl(context):
 
 @when ('Click button "Choose File"')
 def step_impl(context):
-    context.upload_doc_page.choose_file()
+    context.upload_doc_page.choose_file(r"C:\Users\Localadmin\Downloads\Test documente incarcate.pdf")
+    #why previous line return SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
+
 
 @when ('Select file "Test documente incarcate.pdf"')
 def step_impl(context):

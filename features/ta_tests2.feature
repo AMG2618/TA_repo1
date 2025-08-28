@@ -35,7 +35,7 @@ Feature: Sign-up new user
   @upload-doc
   Scenario: Upload document
     Given Navigate to the user page
-    And Click link "Incarca fisier"
+    When Click link "Incarca fisier"
     And Click button "Choose File"
     And Select file "Test documente incarcate.pdf"
     And Select "Diploma EMC" from dropdown Tip document
