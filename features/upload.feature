@@ -18,7 +18,7 @@ Feature: Upload documente
     Then User is redirected to the "https://probaamg.rdsweb.ro/user/\d+$" page
     When Click link "Incarca fisier"
     And Click button "Choose File"
-    And Select file "Test documente incarcate.pdf"
+    And Select file "Test_documente_incarcate.pdf"
     #And Select "Diploma EMC" from dropdown Tip document
     #And Select "24" from dropdown "Puncte EMC"
     #And Select date "08/13/2025" from Data EMC picker
