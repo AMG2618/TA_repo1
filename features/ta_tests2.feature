@@ -30,16 +30,21 @@ Feature: Sign-up new user
     And Enter "Alimentare25" in the password input field
     And Click the button "Conectare"
     Then User is redirected to the "https://probaamg.rdsweb.ro/user/\d+$" page
-#
-#Feature: Încărcare fișier EMC după autentificare
-#  @T4
-#  Scenario: Upload fișier EMC
-#    Given utilizatorul este autentificat
-#    When accesează pagina de încărcare EMC
-#    And selectează fișierul "emc_test.pdf"
-#    And apasă pe butonul "Upload"
-#    Then fișierul apare în lista de documente
-#
+
+
+  @upload-doc
+  Scenario: Upload document
+    Given Navigate to the user page
+    And Click link "Incarca fisier"
+    And Click button "Choose File"
+    And Select file "Test documente incarcate.pdf"
+    And Select "Diploma EMC" from dropdown Tip document
+    And Select "24" from dropdown "Puncte EMC"
+    And Select date "08/13/2025" from Data EMC picker
+    And Click button "Incarca"
+    Then Message "A fost incarcat: Test_documente_incarcate.pdf de tipul diploma_emc" displayed
+
+
 #Feature: Vizualizare lista documentelor încărcate
 #  @T5
 #  Scenario: Vizualizare documente

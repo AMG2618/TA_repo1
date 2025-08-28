@@ -6,7 +6,6 @@ from features.pages.base_page import BasePage
 
 SIGN_UP_PAGE_URL = "https://probaamg.rdsweb.ro/inregistrare"
 
-#class SignUpPage(Browser):
 class SignUpPage(BasePage):
 
     INPUT_USER = (By.NAME, "user")
@@ -39,11 +38,15 @@ class SignUpPage(BasePage):
     def click_inregistrare(self):
         #self.driver.find_element(By.XPATH, "//input[@type='submit' and @value='Inregistrare']").click()
         self.click(self.BUTTON_SUBMIT)
+
     def get_error_message(self):
         return self.driver.find_element(By.XPATH, "//h5[contains(text(), 'Eroare! Utilizatorul exista deja in baza de date')]").text
 
-    def verify_signup_url(self, expected_url):
+    def verify_current_url(self, expected_url):
+        print(f"url-ul primit: {self.driver.current_url}")
+        import re
         current_url = self.driver.current_url
-        print(f"[DEBUG] Expected: {expected_url}")
-        print(f"[DEBUG] Actual: {current_url}")
-        return expected_url in current_url
+        if bool(re.match(expected_url, current_url)):
+            return 1
+        else:
+            return 0
