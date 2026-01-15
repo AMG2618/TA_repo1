@@ -10,7 +10,7 @@ USER_PAGE = "https://probaamg.rdsweb.ro/user/\d+$"
 class UploadDocumentPage(BasePage):
     BUTTON_INCARCA_FISIER = (By.LINK_TEXT, 'Incarca fisier')
     CHOOSE_FILE_BUTTON = (By.NAME, "file")
-    INPUT_FILE = (By.NAME, "file")
+    # INPUT_FILE = (By.NAME, "file")
     INPUT_TIP = (By.ID, "tip")
     PUNCTE_EMC = (By.NAME, "emc")
     INPUT_DATE = (By.NAME, "data")
@@ -28,8 +28,8 @@ class UploadDocumentPage(BasePage):
         file_path = os.path.join(base_dir, '..', 'resources', filename)
         return os.path.normpath(file_path)
 
-    def choose_file(self, file_path):
-        self.driver.find_element(*self.INPUT_FILE).send_keys(file_path)
+    def choose_file(self, get_file_path):
+        self.driver.find_element(*self.CHOOSE_FILE_BUTTON).send_keys(get_file_path)
 
     # def choose_file(self, file_path):
     #     self.driver.find_element(*self.CHOOSE_FILE_BUTTON).send_keys(file_path)

@@ -1,4 +1,5 @@
 from behave import *
+from behave import then
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
@@ -24,6 +25,5 @@ def step_impl(context, expected_url):
     # expected_url is already a regex string
     assert context.login_page.verify_current_url(expected_url), \
         f"URL did not match: expected pattern: {expected_url}"
-
 
 

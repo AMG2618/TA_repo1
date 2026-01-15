@@ -33,9 +33,9 @@ def step_impl(context):
     context.sign_up_page.click_inregistrare()
 
 @then('User is redirected to the login "{expected_login_url}" page')
-def step_impl(context, expected_login_url):
+def step_impl(context, expected_url):
     assert context.sign_up_page.verify_signup_url(expected_login_url), \
-        f"Expected URL to match {expected_login_url} but got {context.sign_up_page.driver.current_url}"
+        f"URL did not match: expected pattern: {expected_login_url}"
 
 @then('Apare un mesaj cu Utilizatorul exista deja in baza de date')
 def step_impl(context):

@@ -10,7 +10,7 @@ Feature: Sign-up new user
     And Enter "Ion" in the prenume input field
     And Enter "Bucuresti" in the colegiu input field
     And Click the button "Inregistrare"
-    Then User is redirected to the login "https://probaamg.rdsweb.ro/login" page
+    Then User is redirected to the login "https://probaamg.rdsweb.ro/login$" page
 
  @sign-up-existing
   Scenario: Sign up with an existing user
@@ -20,8 +20,9 @@ Feature: Sign-up new user
     And Enter "Ion" in the prenume input field
     And Enter "Bucuresti" in the colegiu input field
     And Click the button "Inregistrare"
-    #Then Error message "Eroare! Utilizatorul exista deja in baza de date" is displayed
+#    Then Error message "Eroare! Utilizatorul exista deja in baza de date" is displayed
     Then Apare un mesaj cu Utilizatorul exista deja in baza de date
+
 
   @login
   Scenario: Login as standard user with valid credentials

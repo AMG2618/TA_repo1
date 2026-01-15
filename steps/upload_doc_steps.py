@@ -1,4 +1,6 @@
 from behave import *
+from selenium.webdriver.common.by import By
+
 
 @given ("Navigate to the user page")
 def step_impl(context):
@@ -10,12 +12,20 @@ def step_impl(context):
 
 @when('Click button "Choose File"')
 def step_impl(context):
-    context.upload_doc_page.click_choose_file_button()
+    context.upload_doc_page = UploadDocumentPage(context.driver)
 
-@when('User selects file "{filename}"')
-def step_impl(context, filename):
-    file_path = context.upload_doc_page.get_file_path(filename)
-    context.upload_doc_page.choose_file(file_path)
+import os
+
+@when('I upload the file from resources')
+def step_impl(context):
+    file_path = os.path.join(os.path.dirname(__file__), '..', '..', 'resources', 'UploadTestDoc.pdf')
+    with open(file_path, 'r') as f:
+        context.uploaded_content = f.read()
+
+# @when('User selects file "{filename}"')
+# def step_impl(context, filename):
+#     file_path = context.upload_doc_page.get_file_path(filename)
+#     context.upload_doc_page.choose_file(file_path)
 
 # @when ('Select file "Test_documente_incarcate.pdf"')
 # def step_impl(context):
