@@ -41,14 +41,14 @@ class SignUpPage(BasePage):
         #self.driver.find_element(By.XPATH, "//input[@type='submit' and @value='Inregistrare']").click()
         self.click(self.BUTTON_SUBMIT)
 
-    def verify_signup_url(self, expected_login_url):
+    def verify_signup_url(self, expected_url):
         current_url = self.driver.current_url
-        return re.match(expected_login_url, current_url) is not None
+        return current_url == expected_url
 
     def get_error_message(self):
         return self.driver.find_element(By.XPATH, "//h5[contains(text(), 'Eroare! Utilizatorul exista deja in baza de date')]").text
 
-
+    print(">>> LOADED SIGN_UP_PAGE.PY")
 
     # def verify_current_url(self, expected_url):
     #     print(f"url-ul primit: {self.driver.current_url}")

@@ -33,6 +33,6 @@ Feature: Upload documents
       Then Message "A fost incarcat: Test_documente_incarcate.pdf de tipul diploma_emc" displayed
 
       Examples:
-        | file                         |tip_document      |puncte_emc|data_emc   |
-        | UploadTestDoc.pdf            |Diploma EMC      |24        |08/13/2025  |
-        | image.jpg                    |CI               |          |            |
+        | file                         |tip_document     |puncte_emc  |data_emc   |
+        | UploadTestDoc.pdf            |Diploma EMC      |24          |08/13/2025 |
+        | image.jpg                    |CI               |            |           |

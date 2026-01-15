@@ -32,10 +32,10 @@ def step_impl(context, text_colegiu):
 def step_impl(context):
     context.sign_up_page.click_inregistrare()
 
-@then('User is redirected to the login "{expected_login_url}" page')
+@then('User is redirected to the login "{expected_url}" page')
 def step_impl(context, expected_url):
-    assert context.sign_up_page.verify_signup_url(expected_login_url), \
-        f"URL did not match: expected pattern: {expected_login_url}"
+    assert context.sign_up_page.verify_signup_url(expected_url), \
+        f"URL did not match: expected pattern: {expected_url}"
 
 @then('Apare un mesaj cu Utilizatorul exista deja in baza de date')
 def step_impl(context):

@@ -10,7 +10,7 @@ Feature: Sign-up new user
     And Enter "Ion" in the prenume input field
     And Enter "Bucuresti" in the colegiu input field
     And Click the button "Inregistrare"
-    Then User is redirected to the login "https://probaamg.rdsweb.ro/login$" page
+    Then User is redirected to the login "https://probaamg.rdsweb.ro/login" page
 
  @sign-up-existing
   Scenario: Sign up with an existing user
