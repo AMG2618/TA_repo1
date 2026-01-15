@@ -27,7 +27,7 @@ class LoginPage(BasePage):
         print(f"url-ul primit: {self.driver.current_url}" )
         import re
         current_url = self.driver.current_url
-        if bool (re.match(expected_url, current_url)):
+        if bool (re.search(expected_url, current_url)):
             return 1
         else:
             return 0
