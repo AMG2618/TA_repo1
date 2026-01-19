@@ -20,6 +20,7 @@ def steps_impl(context, text):
 def steps_impl(context):
     context.login_page.click_button_submit()
 
+
 @then('User is redirected to the "{expected_url}" page')
 def step_impl(context, expected_url):
     # expected_url is already a regex string

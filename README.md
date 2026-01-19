@@ -38,6 +38,7 @@ TA_exam2
             base_page.py
             login_page.py
             sign_up_page.py
+            upload_doc_page.py
     steps/
         login_steps.py
         sign_up_steps.py
